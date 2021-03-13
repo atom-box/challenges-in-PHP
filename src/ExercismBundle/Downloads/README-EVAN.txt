@@ -1,5 +1,5 @@
 I downloaded the php unit tests to here.
-Then I moved them to 
+Then I moved them to
 	src/ExercismBundle/Tests/hamming_test.php
 
 These worked to get started:
