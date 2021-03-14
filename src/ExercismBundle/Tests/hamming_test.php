@@ -1,45 +1,56 @@
 <?php
 
-class hamming_test extends PHPUnit\Framework\TestCase
+namespace ExercismBundle\Tests;
+
+require_once '/home/evan/projects/challenges-in-PHP/src/ExercismBundle/Service/Hamming.php';
+
+use ExercismBundle\Service\Hamming;
+use PHPUnit\Framework\TestCase;
+
+final class hamming_test extends TestCase
 {
-    public static function setUpBeforeClass(): void
-    {
-        require_once 'src/ExercismBundle/Service/hamming.php';
-    }
 
     public function testNoDifferenceBetweenIdenticalStrands(): void
     {
-        $this->assertEquals(0, distance('A', 'A'));
+        $rosalind = new Hamming();
+        $this->assertEquals(0, $rosalind->distance('A', 'A'));
     }
 
     public function testCompleteHammingDistanceOfForSingleNucleotideStrand(): void
     {
-        $this->assertEquals(1, distance('A', 'G'));
+        $rosalind = new Hamming();
+
+        $this->assertEquals(1, $rosalind->distance('A', 'G'));
     }
 
     public function testCompleteHammingDistanceForSmallStrand(): void
     {
-        $this->assertEquals(2, distance('AG', 'CT'));
+        $rosalind = new Hamming();
+        $this->assertEquals(2, $rosalind->distance('AG', 'CT'));
     }
 
     public function testSmallHammingDistance(): void
     {
-        $this->assertEquals(1, distance('AT', 'CT'));
+        $rosalind = new Hamming();
+        $this->assertEquals(1, $rosalind->distance('AT', 'CT'));
     }
 
     public function testSmallHammingDistanceInLongerStrand(): void
     {
-        $this->assertEquals(1, distance('GGACG', 'GGTCG'));
+        $rosalind = new Hamming();
+        $this->assertEquals(1, $rosalind->distance('GGACG', 'GGTCG'));
     }
 
     public function testLargeHammingDistance(): void
     {
-        $this->assertEquals(4, distance('GATACA', 'GCATAA'));
+        $rosalind = new Hamming();
+        $this->assertEquals(4, $rosalind->distance('GATACA', 'GCATAA'));
     }
 
     public function testHammingDistanceInVeryLongStrand(): void
     {
-        $this->assertEquals(9, distance('GGACGGATTCTG', 'AGGACGGATTCT'));
+        $rosalind = new Hamming();
+        $this->assertEquals(9, $rosalind->distance('GGACGGATTCTG', 'AGGACGGATTCT'));
     }
 
     public function testExceptionThrownWhenStrandsAreDifferentLength(): void
@@ -47,5 +58,10 @@ class hamming_test extends PHPUnit\Framework\TestCase
         $this->expectException('InvalidArgumentException');
         $this->expectExceptionMessage('DNA strands must be of equal length.');
         distance('GGACG', 'AGGACGTGG');
+    }
+
+    public function todo()
+    {
+        // Once the tests pass, come back, comment out line 5 and figure out timeboxed if the config.xml will help see the other required class file.
     }
 }
