@@ -12,45 +12,45 @@ final class hamming_test extends TestCase
 
     public function testNoDifferenceBetweenIdenticalStrands(): void
     {
-        $rosalind = new Hamming();
-        $this->assertEquals(0, $rosalind->distance('A', 'A'));
+        $rosalind = new Hamming('A', 'A');
+        $this->assertEquals(0, $rosalind->distance());
     }
 
     public function testCompleteHammingDistanceOfForSingleNucleotideStrand(): void
     {
-        $rosalind = new Hamming();
+        $rosalind = new Hamming('A', 'G');
 
-        $this->assertEquals(1, $rosalind->distance('A', 'G'));
+        $this->assertEquals(1, $rosalind->distance());
     }
 
     public function testCompleteHammingDistanceForSmallStrand(): void
     {
-        $rosalind = new Hamming();
-        $this->assertEquals(2, $rosalind->distance('AG', 'CT'));
+        $rosalind = new Hamming('AG', 'CT');
+        $this->assertEquals(2, $rosalind->distance());
     }
 
     public function testSmallHammingDistance(): void
     {
-        $rosalind = new Hamming();
-        $this->assertEquals(1, $rosalind->distance('AT', 'CT'));
+        $rosalind = new Hamming('AT', 'CT');
+        $this->assertEquals(1, $rosalind->distance());
     }
 
     public function testSmallHammingDistanceInLongerStrand(): void
     {
-        $rosalind = new Hamming();
-        $this->assertEquals(1, $rosalind->distance('GGACG', 'GGTCG'));
+        $rosalind = new Hamming('GGACG', 'GGTCG');
+        $this->assertEquals(1, $rosalind->distance());
     }
 
     public function testLargeHammingDistance(): void
     {
-        $rosalind = new Hamming();
-        $this->assertEquals(4, $rosalind->distance('GATACA', 'GCATAA'));
+        $rosalind = new Hamming('GATACA', 'GCATAA');
+        $this->assertEquals(4, $rosalind->distance());
     }
 
     public function testHammingDistanceInVeryLongStrand(): void
     {
-        $rosalind = new Hamming();
-        $this->assertEquals(9, $rosalind->distance('GGACGGATTCTG', 'AGGACGGATTCT'));
+        $rosalind = new Hamming('GGACGGATTCTG', 'AGGACGGATTCT');
+        $this->assertEquals(9, $rosalind->distance());
     }
 
     public function testExceptionThrownWhenStrandsAreDifferentLength(): void
