@@ -18,14 +18,14 @@ final class hamming_test extends TestCase
 
     public function testCompleteHammingDistanceOfForSingleNucleotideStrand(): void
     {
-        $rosalind = new Hamming('A', 'G');
+        $rosalind = new Hamming('A', 'X');
 
         $this->assertEquals(1, $rosalind->distance());
     }
 
     public function testCompleteHammingDistanceForSmallStrand(): void
     {
-        $rosalind = new Hamming('AG', 'CT');
+        $rosalind = new Hamming('AG', 'Cx');
         $this->assertEquals(2, $rosalind->distance());
     }
 
@@ -55,9 +55,10 @@ final class hamming_test extends TestCase
 
     public function testExceptionThrownWhenStrandsAreDifferentLength(): void
     {
+        $rosalind = new Hamming('GGACG', 'AGGACGTGG');
         $this->expectException('InvalidArgumentException');
         $this->expectExceptionMessage('DNA strands must be of equal length.');
-        distance('GGACG', 'AGGACGTGG');
+        $rosalind->distance();
     }
 
     public function todo()
