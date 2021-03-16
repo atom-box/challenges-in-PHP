@@ -18,14 +18,14 @@ final class hamming_test extends TestCase
 
     public function testCompleteHammingDistanceOfForSingleNucleotideStrand(): void
     {
-        $rosalind = new Hamming('A', 'X');
+        $rosalind = new Hamming('A', 'G');
 
         $this->assertEquals(1, $rosalind->distance());
     }
 
     public function testCompleteHammingDistanceForSmallStrand(): void
     {
-        $rosalind = new Hamming('AG', 'Cx');
+        $rosalind = new Hamming('AG', 'CT');
         $this->assertEquals(2, $rosalind->distance());
     }
 
@@ -53,6 +53,13 @@ final class hamming_test extends TestCase
         $this->assertEquals(9, $rosalind->distance());
     }
 
+    /*
+    SYMFONY OVERIDES EXCEPTIONS.
+    BUT THIS WAS USEFUL TO LEARN ABOUT VANILLA PHP
+    THE CORRECT CODE TO USE WOULD HAVE BEEN
+            ////////////
+            throw new InvalidArgumentException('DNA strands must be of equal length.');
+            ////////////
     public function testExceptionThrownWhenStrandsAreDifferentLength(): void
     {
         $rosalind = new Hamming('GGACG', 'AGGACGTGG');
@@ -60,9 +67,36 @@ final class hamming_test extends TestCase
         $this->expectExceptionMessage('DNA strands must be of equal length.');
         $rosalind->distance();
     }
-
+    */
     public function todo()
     {
         // Once the tests pass, come back, comment out line 5 and figure out timeboxed if the config.xml will help see the other required class file.
     }
+
+    /*
+
+
+            return type must be EXCEPTION
+   https://phpunit.readthedocs.io/en/9.5/writing-tests-for-phpunit.html?highlight=expectExceptionMessage
+
+   __ _
+  / _` |
+ | (_| |
+  \__,_|
+  ____  _ _
+ |  _ \(_) |
+ | |_) |_| |_
+ |  _ <| | __|
+ | |_) | | |_
+ |____/|_|\__|_  __
+  |__   __|  | |/ /
+  ___| |_   _| ' /
+ / __| | | | |  <
+ \__ \ | |_| | . \
+ |___/_|\__,_|_|\_\
+
+
+
+
+    */
 }

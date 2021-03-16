@@ -2,6 +2,8 @@
 
 namespace ExercismBundle\Service;
 
+use Symfony\Component\Config\Definition\Exception\Exception;
+
 class Hamming
 {
     public function __construct(string $y, string $z)
@@ -10,8 +12,14 @@ class Hamming
         $this->z = $z;
     }
 
-    public function distance(): int
+    public function distance()
     {
+
+        if (strlen($this->y) !== strlen($this->z)) {
+            throw new Exception('DNA strands must be of equal length.');
+            // throw new InvalidArgumentException('DNA strands must be of equal length.');
+        }
+
         $score = 0;
         $basesSense = str_split($this->y);
         $basesAntisense = str_split($this->z);
@@ -24,10 +32,8 @@ class Hamming
     private function pointMutant(string $a, string $b): int
     {
         if ($a === $b) {
-            echo "Called with [$a] and [$b]: MATCH. \n";
             return 0;
         }
-        echo "Called with [$a] and [$b]:       MISS! \n";
         return 1;
     }
 }
