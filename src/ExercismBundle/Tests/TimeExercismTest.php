@@ -1,13 +1,22 @@
 <?php
 
-class GigasecondTest extends PHPUnit\Framework\TestCase
+namespace ExercismBundle\Tests;
+
+// require_once '/home/evan/projects/challenges-in-PHP/src/ExercismBundle/Service/TimeExercism.php';
+
+use DateTimeZone;
+use DateTimeImmutable;
+use PHPUnit\Framework\TestCase;
+use ExercismBundle\Service\TimeExercism;
+
+final class TimeExercismTest extends TestCase
 {
-    public static function setUpBeforeClass() : void
+    public static function setUpBeforeClass(): void
     {
-        require_once 'gigasecond.php';
+        require_once '/home/evan/projects/challenges-in-PHP/src/ExercismBundle/Service/TimeExercism.php';
     }
 
-    public function dateSetup($date) : DateTimeImmutable
+    public function dateSetup($date): DateTimeImmutable
     {
         $UTC = new DateTimeZone('UTC');
         return new DateTimeImmutable($date, $UTC);
@@ -43,18 +52,14 @@ class GigasecondTest extends PHPUnit\Framework\TestCase
     public function testFrom(string $inputDate, string $expected): void
     {
         $date = $this->dateSetup($inputDate);
-        $gs = from($date);
+        $timer = new TimeExercism();
+        $gs = $timer->from($date);
 
         $this->assertSame($expected, $gs->format('Y-m-d H:i:s'));
     }
-
-    /**
-     * @dataProvider inputDates
-     * @param string $inputDate
-     */
-    public function testFromReturnType(string $inputDate): void
-    {
-        $date = $this->dateSetup($inputDate);
-        $this->assertInstanceOf(DateTimeImmutable::class, from($date));
-    }
 }
+/*
+Learning notes:
+1) The use statement works
+2) Both the use statement and the require once must be present
+*/
