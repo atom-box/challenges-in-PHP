@@ -7,7 +7,7 @@ require_once '/home/evan/projects/challenges-in-PHP/src/ExercismBundle/Service/H
 use ExercismBundle\Service\Hamming;
 use PHPUnit\Framework\TestCase;
 
-final class hamming_test extends TestCase
+final class HammingTest extends TestCase
 {
 
     public function testNoDifferenceBetweenIdenticalStrands(): void
