@@ -16,16 +16,13 @@ class  TimeExercism
     {
         // $timeStep = new DateInterval("PT1000000000S");
         $theGiga = 1000000000000;
-        $timeStep = $this->time_elapsed($theGiga);
-        var_dump($timeStep);
-        die;
-
-
-        $dateObject->add($timeStep);
+        $timeStep = $this->stringifyTimeInt($theGiga);
+        // $timeStep = return new DateInterval('PT45M');
+        $dateObject = $dateObject->add($timeStep);
         return $dateObject;
     }
     // wow this part is cool; copied it from somewhere!
-    function time_elapsed($secs)
+    function stringifyTimeInt($secs)
     {
         $bit = array(
             'y' => $secs / 31556926 % 12,
@@ -36,18 +33,14 @@ class  TimeExercism
             's' => $secs % 60
         );
 
-        foreach ($bit as $k => $v)
-            if ($v > 0) $ret[] = $v . $k;
-
-        return join(' ', $ret);
+        $cobbled = 'PT130000S';
+        return new DateInterval($cobbled);
     }
 }
 
 /*
 PSEUDO CODE:
-CONVERT TO A SECONDSISH OBJECT
-ADD A BILLION SECONDS
-CONVERT TO THAT FORMAT (LOOK IT UP)
+TODO
 
 $date = new DateTime('2000-01-01');
 $date->add(new DateInterval('P10D'));
