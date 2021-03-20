@@ -24,14 +24,15 @@ class  TimeExercism
     function stringifyTimeInt($secs)
     {
         $bit = array(
-            'y' => (int)($secs / 31556926),
-            'd' => $secs % 31556926 / 86400,
-            's' => $secs  % 31556926 % 86400,
+            'y' => (int)($secs / 31536000),
+            // 'y' => (int)($secs / 31556926),
+            'd' => (int)($secs % 31536000 / 86400),
+            's' => (int)($secs  % 31536000 % 86400),
         );
 
         $cobbled = 'P' . $bit['y'] . 'Y' . $bit['d'] . 'D' . 'T' . $bit['s'] . 'S';
-        echo ($cobbled . "\n");
-        die;
+        // echo ($cobbled . "\n");
+        // die;
         return new DateInterval($cobbled);
     }
 }
