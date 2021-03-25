@@ -23,7 +23,7 @@ class Robot
 
     public function reset()
     {
-        return 'fudgie thee whale';
+        $this->name = $this->makeName();
     }
 
     private function makeName()
