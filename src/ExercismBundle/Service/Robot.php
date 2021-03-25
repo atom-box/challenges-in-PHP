@@ -2,15 +2,20 @@
 
 namespace ExercismBundle\Service;
 
+use ExercismBundle\Service\RobotDB;
+
+require_once('RobotDB.php');
+
 class Robot
 {
     private $name;
 
-    private $unavailables = [];
+    private $unavailables;
 
     public function __construct()
     {
         $this->name = '';
+        $this->unavailables = $this->getDB();
     }
 
     public function getName()
@@ -35,11 +40,17 @@ class Robot
             $this->name .= $this->decimal();
             $this->name .= $this->decimal();
             $this->name .= $this->decimal();
-        } while (false);
-        $unavailables[] =  $this->name;
+        } while (in_array($this->name, $this->unavailables));
+        $this->unavailables[] =  $this->name;
+        echo implode('-', $this->unavailables) . ' is size of UNAVAILABLES array.' . "\n";
+        // echo count($this->unavailables) . ' is size of UNAVAILABLES array.' . "\n";
         return $this->name;
     }
 
+    private function getDB(): array
+    {
+        return ['r', 't', 'c', 's'];
+    }
     private function bigChar()
     {
         $char = chr(random_int(65, 90));
