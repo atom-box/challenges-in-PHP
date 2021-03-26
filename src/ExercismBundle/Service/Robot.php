@@ -7,19 +7,15 @@ use Nameable;
 require_once('RobotDB.php');
 require_once('Nameable.php');
 
-class Robot extends Nameable
+class Robot
 {
     private $name;
 
-    // private $retiredNames;
+    static private $retiredNames = [];
 
     public function __construct()
     {
         $this->name = '';
-        if (true) {
-            parent::__construct();
-            // print gettype($this->retiredNames) . " ______________\n";
-        }
     }
 
     public function getName()
@@ -44,17 +40,11 @@ class Robot extends Nameable
             $this->name .= $this->decimal();
             $this->name .= $this->decimal();
             $this->name .= $this->decimal();
-        } while (in_array($this->name, $this->retiredNames));
-        $this->retiredNames[] =  $this->name;
+        } while (in_array($this->name, self::$retiredNames));
+        self::$retiredNames[] =  $this->name;
 
-        // echo implode('-', $this->retiredNames) . ' is size of retiredNames array.' . "\n";
-        echo count($this->retiredNames) . ' is size of retiredNames array.' . "\n";
+        echo count(self::$retiredNames) . ' is size of retiredNames array.' . "\n";
         return $this->name;
-    }
-
-    private function getDB(): array
-    {
-        return ['r', 't', 'c', 's'];
     }
     private function bigChar()
     {
