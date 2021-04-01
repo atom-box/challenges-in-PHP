@@ -2,7 +2,7 @@
 
 namespace ExercismBundle\Tests;
 
-require_once '/home/evan/projects/challenges-in-PHP/src/ExercismBundle/Service/Hamming.php';
+require_once 'home/evan/projects/challenges-in-PHP/src/ExercismBundle/Service/Hamming.php';
 
 use ExercismBundle\Service\Hamming;
 use PHPUnit\Framework\TestCase;
