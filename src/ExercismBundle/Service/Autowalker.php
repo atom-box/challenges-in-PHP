@@ -4,17 +4,24 @@ namespace ExercismBundle\Service;
 
 class Autowalker
 {
-    const DIRECTION_NORTH = [0, 1];
-    const DIRECTION_EAST = [1, 0];
-    const DIRECTION_SOUTH = [0, -1];
-    const DIRECTION_WEST = [-1, 0];
+    // const DIRECTION_NORTH = -0.5;  // pi/2
+    // const DIRECTION_EAST = 0;     // cos(pi) * (-1) = -1
+    // const DIRECTION_SOUTH = 0.5; // pi / -2
+    // const DIRECTION_WEST = 1;     // cos(pi) = -1
+
+
+    public const DIRECTION_NORTH = [0, 1];
+    public const DIRECTION_EAST = [1, 0];
+    public const DIRECTION_SOUTH = [0, -1];
+    public const DIRECTION_WEST = [-1, 0];
+
 
     // position 0 is always the current, followed by next 3 right turns
     private $steeringWheel = array(
-        DIRECTION_NORTH,
-        DIRECTION_EAST,
-        DIRECTION_SOUTH,
-        DIRECTION_WEST,
+        self::DIRECTION_NORTH,
+        self::DIRECTION_EAST,
+        self::DIRECTION_SOUTH,
+        self::DIRECTION_WEST,
     );
     public $position = [0, 0];
     public $direction = [0, 1];
