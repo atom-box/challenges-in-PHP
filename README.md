@@ -1,13 +1,12 @@
 # Challenges
-## Some of the sources
-Exercism PHP track
-Coding Bat (Stanford University)
-## Done
-PHPUnit installed (Installed twice: due to an error message during `Composer install` I reinstalled by the `wget` way)
-## To do
-Make the tests start passing.
-## How to use
-This was built with only the skeleton install of Symfony, to see what that is like.
-PHPUnit runs for the Hamming test with:
+## Start with a test
+In this case, someone else wrote the tests: [Exercism PHP](https://exercism.io/tracks/php). These run in phpunit
+## What I wrote
+My solution code is mostly in the Service directory of the [ExercismBundle](https://github.com/atom-box/challenges-in-PHP/tree/master/src/ExercismBundle/Service).
+
+## Deploy notes
+PHPUnit installed (Installed twice: due to an error message during `Composer install` I reinstalled by the `wget` way)    
+This was built with only the skeleton install of Symfony.  
+PHPUnit useage:  
 `./vendor/bin/phpunit src/ExercismBundle/Tests/hamming_test.php`
 
